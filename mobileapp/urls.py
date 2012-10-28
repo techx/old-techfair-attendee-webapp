@@ -4,6 +4,8 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'mobileapp.views.home', name='home'),
@@ -14,4 +16,9 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^map/$', 'map.views.index'),
+    url(r'^map/search$', 'map.views.search'),
+    
+
 )
+urlpatterns += staticfiles_urlpatterns()
