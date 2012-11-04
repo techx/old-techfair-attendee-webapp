@@ -26,3 +26,5 @@ application = get_wsgi_application()
 # Apply WSGI middleware here.
 # from helloworld.wsgi import HelloWorldApplication
 # application = HelloWorldApplication(application)
+import mobileapp.monitor
+mobileapp.monitor.start(interval=1.0)
