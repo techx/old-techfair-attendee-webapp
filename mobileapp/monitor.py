@@ -1,6 +1,6 @@
+#Copy directly from http://code.google.com/p/modwsgi/wiki/ReloadingSourceCode#Monitoring_For_Code_Changes
 import os
 import sys
-import time
 import signal
 import threading
 import atexit

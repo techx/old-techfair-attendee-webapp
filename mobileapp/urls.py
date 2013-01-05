@@ -17,7 +17,9 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'^map/$', 'map.views.index'),
-    url(r'^map/search$', 'map.views.search'),
+    url(r'^company/$', 'company.views.index'),
+    url(r'^map/search/$', 'map.views.search'),
+    url(r'^company/(\d+)/$', 'company.views.view'),
     
 
 )
