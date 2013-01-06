@@ -20,7 +20,7 @@ DATABASES = {
     },
     'logportal': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'techfair+logportaldev',                      # Or path to database file if using sqlite3.
+        'NAME': 'techfair+logportal',                      # Or path to database file if using sqlite3.
         'USER': 'techfair',                      # Not used with sqlite3.
         'PASSWORD': '02139techfair',                  # Not used with sqlite3.
         'HOST': 'mysql.mit.edu',                      # Set to empty string for localhost. Not used with sqlite3.

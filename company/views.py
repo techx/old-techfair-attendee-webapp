@@ -7,7 +7,7 @@ from django.shortcuts import render, get_object_or_404,render_to_response
 import json
 
 def index(request):
-   companies = Company.objects.all().order_by('Company_Display_Name')
+   companies = Company.objects.all().exclude(Company_Display_Name__exact="").order_by('Company_Display_Name')
    return render_to_response('company/index.html', {'companies': companies})
 
 def view(request,company_id):
