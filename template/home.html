@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Mobile Site{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+
+{% block content %}
+<ul data-role="listview">
+			<li><a href="/map/" data-ajax="false">
+				<img src="/static/img/icon_map.png" />
+				<h3>Map</h3>
+				<p></p>
+			</a></li>
+			<li><a href="/company/">
+				<img src="/static/img/icon_company.png" />
+				<h3>Company</h3>
+				<p>List of companies attending MIT Techfair</p>
+			</a></li>
+			<li><a href="http://techfair.mit.edu">
+				<img src="/static/img/icon_desktop.png" />
+				<h3>PC Version</h3>
+				<p>Full version of MIT Techfair website</p>
+			</a></li>
+		</ul>
+{% endblock %}
+
+{% block header %}
+
+{% endblock %}

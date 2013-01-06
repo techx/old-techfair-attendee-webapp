@@ -19,8 +19,8 @@ urlpatterns = patterns('',
     url(r'^map/$', 'map.views.index'),
     url(r'^company/$', 'company.views.index'),
     url(r'^map/search/$', 'map.views.search'),
-    url(r'^company/(\d+)/$', 'company.views.view'),
-    
+    url(r'^company/(\d+)/$', 'company.views.view'), 
+    url(r'^$', 'mobileapp.views.home', name='home'),
 
 )
 urlpatterns += staticfiles_urlpatterns()

@@ -2,6 +2,6 @@ from company.models import Company
 from django.contrib import admin
 
 class CompanyAdmin(admin.ModelAdmin):
-    fields = ['Company_Display_Name']
+    list_display = ('Company_Display_Name','Company_Description')
 
 admin.site.register(Company, CompanyAdmin)

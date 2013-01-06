@@ -2,16 +2,14 @@
 from django.template import Context, loader
 from company.models import Company
 from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404,render_to_response
+
 import json
 
 def index(request):
-    t = loader.get_template('company/index.html')
-    c = Context({
-    })
-    return HttpResponse(t.render(c))
+   companies = Company.objects.all().order_by('Company_Display_Name')
+   return render_to_response('company/index.html', {'companies': companies})
 
-def view(request,CompanyId):
-    t = loader.get_template('company/view.html')
-    c = Context({
-    })
-    return HttpResponse(t.render(c))
+def view(request,company_id):
+    company = get_object_or_404(Company, pk=company_id)
+    return render(request, 'company/view.html', {'company': company})
