@@ -26,11 +26,10 @@ def search(request):
     locations = Location.objects.filter(Q(title__icontains=query) | Q(company_id__in=companies_id))
     output = []
     for item in locations:
-        position = map(int, item.position.split(','))
 
         if item.company_id is not None:
             company = company_dict[item.company_id]
             output.append({'title':company.Company_Display_Name ,'description':company.Company_Description,'url': '/company/%d/' % item.company_id,'pos':position})
         else:
-            output.append({'title':item.title,'description':item.description,'url':item.url,'pos':position})
+            output.append({'title':item.title,'description':item.description,'url':item.url,'pos':json.loads(item.position)})
     return HttpResponse(json.dumps(output), mimetype="application/json")

@@ -1,5 +1,8 @@
+
 function techfairmap_init(map_id,url_prefix) {
-	var map = L.map(map_id).setView([0, 0], 2);
+	var map = L.map(map_id, {
+            crs: L.CRS.Simple
+	}).setView([0, 0], 2);
 	L.tileLayer((typeof url_prefix !== 'undefined'? url_prefix : '')+ '/static/map/{z}/{x}/{y}.png', {
 		maxZoom : 4,
 		continuousWorld : false,
@@ -12,7 +15,8 @@ function techfairmap_init(map_id,url_prefix) {
 	layergroup.addTo(map);
 	map.on('click', function(e) {
 		if(TECHFAIRMAP_DEBUG) {
-			alert(e.latlng.lat+','+e.latlng.lng);
+			pnt =e.latlng;
+			alert(pnt.lat+','+pnt.lng);
 		}
 	});
 }
@@ -25,7 +29,7 @@ function techfairmap_search(query,url_prefix) {
 		var alreadyopen = false;
 		for (var id in response) {
 			item = response[id];
-			layergroup.addLayer( l = L.marker(item.pos).bindPopup("<strong>" + item.title + "</strong><br/>"+"<a href='" + item.url + "'>Details</a>"));
+			layergroup.addLayer( l = L.rectangle(item.pos).bindPopup("<strong>" + item.title + "</strong><br/>"+"<a href='" + item.url + "'>Details</a>"));
 			if (query != "" && !alreadyopen) {
 				l.openPopup();
 				alreadyopen = true;
