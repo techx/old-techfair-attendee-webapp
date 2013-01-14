@@ -21,7 +21,7 @@ function techfairmap_init(map_id,url_prefix) {
 	});
 }
 function techfairmap_search(query,url_prefix) {
-	techfairmap_beforesearch(query)
+	techfairmap_beforesearch(query);
 	$.post((typeof url_prefix !== 'undefined'? url_prefix : '')+'/map/search/', {
 		q : query
 	}, function(response) {
@@ -29,7 +29,7 @@ function techfairmap_search(query,url_prefix) {
 		var alreadyopen = false;
 		for (var id in response) {
 			item = response[id];
-			layergroup.addLayer( l = L.rectangle(item.pos).bindPopup("<strong>" + item.title + "</strong><br/>"+"<a href='" + item.url + "'>Details</a>"));
+			layergroup.addLayer( l = L.rectangle(item.pos).bindPopup("<strong>" + item.title + "</strong><br/>"+item.description+"<br/>"+"<a href='" + item.url + "'>Details</a>"));
 			if (query != "" && !alreadyopen) {
 				l.openPopup();
 				alreadyopen = true;
