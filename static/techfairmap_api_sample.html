@@ -1,0 +1,38 @@
+<html>
+<head>
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.css" />
+	<link rel="stylesheet" href="/static/css/map.css" />
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+
+	<script src="http://m.mittechfair.org/static/js/leaflet.js"></script>
+	<script src="hhttp://m.mittechfair.org/static/js/techfairmap-api.js"></script>
+	<script>
+		PREFIX = "http://m.mittechfair.org"
+		var TECHFAIRMAP_DEBUG=false;
+		function techfairmap_aftersearch(response)
+		{
+		}
+		function techfairmap_beforesearch(query)
+		{
+		}
+		$(document).ready(function() {
+			techfairmap_init('map',PREFIX);
+			techfairmap_search("",PREFIX);
+			$('#search-form').submit(function(e)
+			{
+				e.preventDefault();
+
+				techfairmap_search($('#q').val());
+			});
+		});
+
+	</script>
+</head>	
+<body>
+	<div id="map" style="height:600px;width:600px"></div>
+	<form id="search-form" action="#">
+	<input type="search" name="q" id="q" value="" />
+	</form>
+
+</body>
+</html>
