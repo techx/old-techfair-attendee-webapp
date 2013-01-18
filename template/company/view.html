@@ -3,7 +3,20 @@
 {% block title %}Company: {{ company.Company_Display_Name }}{% endblock %}
 
 {% block head %}
-
+{% if submitted %}
+<script>
+	
+	$(function(){ 		$.mobile.loading('hide', {});
+	$.mobile.loading('show', {
+			text : 'Feedback Submitted :)',
+			textVisible : true,
+			textonly : true,
+			theme : 'e',
+			html : ""
+		});
+		setTimeout($.mobile.hidePageLoadingMsg, 4000);});
+</script>
+{% endif %}
 {% endblock %}
 
 
@@ -15,7 +28,27 @@
 <br/>
 
 <br/><br/>
-<a href="/map#{{ company.Company_Display_Name }}" data-ajax="false">View on the map</a>
+<a href="/map#{{ company.Company_Display_Name }}" data-ajax="false">View on the map</a> <br/><br/>
+
+
+<h3>Feedback</h3>
+<div id="comment">
+
+<form  action="#" method="post" data-ajax="false">{% csrf_token %}
+{% for field in form %}
+    <div>
+    	{% if not field.is_hidden %}
+        <label for="{{ field.label }}">{{ field.label }}{% if field.field.required %} *{% endif %}</label>
+        {% endif %}
+        
+
+        {{ field }}
+    </div>
+
+{% endfor %}
+<input type="submit" value="Submit" />
+</form>
+</div>
 {% endblock %}
 
 {% block header %}

@@ -13,3 +13,12 @@ class Company(models.Model):
         help_text="Higher quality logos are preferred to ensure they look great in printed material. Please upload a PNG or JPEG format image.")
     def __unicode__(self):
         return self.Company_Display_Name
+    
+    
+class Comment(models.Model):
+    company = models.ForeignKey(Company,blank=True,null=True)
+    name = models.CharField(max_length=200,blank=True)
+    email = models.CharField(max_length=200,blank=True)
+    text = models.TextField()
+    ip_address = models.CharField(max_length=200,blank=True)
+    created_at = models.DateTimeField(auto_now_add = True)
