@@ -9,7 +9,15 @@ from django.db.models import Q
 import json
 
 def _excerpt(string):
-    return string[:100]
+    words = string.split(' ')
+    str = ''
+    for x in words:
+        if len(str) < 150:
+            str+= x + ' '
+        else:
+            str+= '...'
+            break
+    return str
 
 def index(request):
     t = loader.get_template('map/index.html')
