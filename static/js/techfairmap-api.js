@@ -29,7 +29,7 @@ function techfairmap_search(query,url_prefix) {
 		var alreadyopen = false;
 		for (var id in response) {
 			item = response[id];
-			layergroup.addLayer( l = L.rectangle(item.pos).bindPopup("<strong>" + item.title + "</strong><br/>"+item.description+"<br/>"+"<a href='" + item.url + "'>Details</a>"));
+			layergroup.addLayer( l = L.rectangle(item.pos).bindPopup("<strong>" + item.title + "</strong><br/>"+item.description+(item.url!=""?"<br/><a href='" + item.url + "'>Details</a>":"")));
 			if (query != "" && !alreadyopen) {
 				l.openPopup();
 				alreadyopen = true;
