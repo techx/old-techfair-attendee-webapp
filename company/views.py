@@ -1,6 +1,7 @@
 # Create your views here.
 from django.template import Context, loader
 from company.models import Company,Comment
+from map.models import Location
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404,render_to_response
 
@@ -16,7 +17,12 @@ class CommentForm(forms.Form):
 
 
 def index(request):
-    companies = Company.objects.all().exclude(Company_Display_Name__exact="").order_by('Company_Display_Name')
+    locations = Location.objects.all()
+    company_ids = set()
+    for location in locations:
+        if location.company_id != None:
+            company_ids.add(location.company_id)
+    companies = Company.objects.filter(id__in=company_ids).exclude(Company_Display_Name__exact="").order_by('Company_Display_Name')
     return render_to_response('company/index.html', {'companies': companies})
 
 def view(request,company_id):
