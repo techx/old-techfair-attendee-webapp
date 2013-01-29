@@ -24,10 +24,15 @@
 <img style="float:right;width:30%" src="{{ company.Company_Logo }}" />
 <h2>{{ company.Company_Display_Name }}</h2>
 {{ company.Company_Description }}
+
 <br/>
 <br/>
 
 <br/><br/>
+
+{% if not company.URL == "" %}
+<a href="{{ company.URL }}">Company Website</a><br/>
+{% endif %}
 <a href="/map#{{ company.Company_Display_Name }}" data-ajax="false">View on the map</a> <br/><br/>
 
 

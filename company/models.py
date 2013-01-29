@@ -11,6 +11,8 @@ class Company(models.Model):
         help_text="Please limit your description to <span id=\"form-description-limit\"></span> words. Longer descriptions will need to be truncated to fit in the booklet.")
     Company_Logo = models.URLField(max_length=500, blank=True,
         help_text="Higher quality logos are preferred to ensure they look great in printed material. Please upload a PNG or JPEG format image.")
+    URL = models.CharField(max_length=500)
+    
     def __unicode__(self):
         return self.Company_Display_Name
     
